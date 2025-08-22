@@ -17,7 +17,7 @@ start:
 	@echo "Bringing up compose stack (build)..."
 	@$(COMPOSE) up --build -d || true
 	@echo "Running lint via compose..."
-	@$(COMPOSE) run --rm lint || { echo "Lint failed, running make fix..."; $(MAKE) fix || { echo "make fix failed"; exit 1; }; echo "Rebuilding images and starting stack again..."; $(COMPOSE) up --build -d || { echo "Compose up failed after fixes"; exit 1; }; }
+	@$(COMPOSE) run --rm action-action.lint || { echo "Lint failed, running make fix..."; $(MAKE) fix || { echo "make fix failed"; exit 1; }; echo "Rebuilding images and starting stack again..."; $(COMPOSE) up --build -d || { echo "Compose up failed after fixes"; exit 1; }; }
 	@echo "Compose is up."
 
 stop:
@@ -27,7 +27,11 @@ logs:
 	@$(COMPOSE) logs -f
 
 enter:
-	@$(COMPOSE) exec test /bin/sh || $(COMPOSE) exec lint /bin/sh
+	@$(COMPOSE) exec action-action.test /bin/sh || $(COMPOSE) exec action-action.lint /bin/sh
+
+install:
+	@$(DOCKER) image inspect $(IMAGE):base >/dev/null 2>&1 || $(MAKE) build-base
+	@$(DOCKER) run --rm -v $(PWD):$(WORKDIR) -w $(WORKDIR) $(IMAGE):base npm install
 
 build-base:
 	@echo "Building base image '$(IMAGE):base'..."
@@ -42,10 +46,10 @@ build-runtime:
 	@$(DOCKER) build --target runtime -f $(DOCKERFILE) -t $(IMAGE):runtime .
 
 test:
-	@$(COMPOSE) run --rm test
+	@$(COMPOSE) run --rm action-action.test
 
 lint:
-	@$(COMPOSE) run --rm lint
+	@$(COMPOSE) run --rm action-action.lint
 
 fix: build-base
 	@echo "Running eslint --fix inside '$(IMAGE):base'..."
@@ -72,7 +76,7 @@ dev:
 run-npm:
 	@if [ -z "$(CMD)" ]; then echo "Usage: make run-npm CMD=script [ARGS='--flag']"; exit 1; fi
 	@$(DOCKER) image inspect $(IMAGE):base >/dev/null 2>&1 || $(MAKE) build-base
-	@$(DOCKER) run --rm -v $(PWD):$(WORKDIR) -w $(WORKDIR) $(IMAGE):base sh -lc "npm ci --include=dev && npm run $(CMD) -- $(ARGS)"
+	@$(DOCKER) run --rm -v $(PWD):$(WORKDIR) -w $(WORKDIR) $(IMAGE):base sh -lc "if [ -f package-lock.json ]; then npm ci --include=dev; else npm install; fi && npm run $(CMD) -- $(ARGS)"
 
 docker-run:
 	@if [ -z "$(CMD)" ]; then echo "Usage: make docker-run CMD='ls -al'"; exit 1; fi

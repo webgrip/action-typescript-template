@@ -1,7 +1,8 @@
 FROM node:24-alpine AS base
 WORKDIR /workspace
+COPY package*.json ./
+RUN npm install --include=dev
 COPY . .
-RUN npm ci --include=dev
 
 FROM base AS build
 RUN npm run build
@@ -17,7 +18,7 @@ CMD ["npm", "run", "lint"]
 FROM node:24-alpine AS runtime
 WORKDIR /workspace
 COPY package*.json ./
-RUN npm ci --omit=dev
+RUN npm install --omit=dev
 COPY --from=build /workspace/dist ./dist
 ENV NODE_ENV=production
 

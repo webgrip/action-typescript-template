@@ -1,4 +1,3 @@
-// Keep the mock hoisted so all imports of '@actions/core' in this test file get mocked.
 jest.mock('@actions/core', () => ({
     info: jest.fn(),
     setFailed: jest.fn(),
@@ -6,7 +5,7 @@ jest.mock('@actions/core', () => ({
 
 describe('src/index.ts', () => {
     beforeEach(() => {
-        jest.resetModules(); // ensure a fresh module registry for each test
+        jest.resetModules();
         jest.clearAllMocks();
     });
 
