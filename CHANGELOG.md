@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/webgrip/action-typescript-template/compare/v1.0.0...v1.0.1) (2025-08-22)
+
+
+### Bug Fixes
+
+* put downstream changes in here ([e78bd92](https://github.com/webgrip/action-typescript-template/commit/e78bd9264e561c2c23f12b60211a6946e9884594))
+
 # 1.0.0 (2025-08-22)
 
 
