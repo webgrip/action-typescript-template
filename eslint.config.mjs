@@ -15,7 +15,7 @@ const compat = new FlatCompat({
     allConfig: js.configs.all,
 });
 
-export default defineConfig([globalIgnores(['**/node_modules/*', '**/dist/*']), {
+export default defineConfig([globalIgnores(['**/node_modules/*', '**/dist/*', '**/docs/*']), {
     extends: compat.extends('eslint:recommended', 'plugin:@typescript-eslint/recommended'),
 
     plugins: {

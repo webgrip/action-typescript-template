@@ -12,6 +12,7 @@ export default {
     testPathIgnorePatterns: [
         '/node_modules/',
         '/dist/',
+        '/docs/'
     ],
 
     collectCoverage: true,
