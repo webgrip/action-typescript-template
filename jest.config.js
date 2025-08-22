@@ -20,7 +20,7 @@ export default {
         'src/**/*.{ts,tsx}',
         '!**/node_modules/**',
         '!**/dist/**',
-        '!**/coverage/**',
+        '!**/coverage/**'
     ],
     coverageDirectory: '<rootDir>/coverage',
     coverageReporters: ['json', 'lcov', 'text', 'clover', 'html', 'json-summary'],
