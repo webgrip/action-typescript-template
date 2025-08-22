@@ -5,7 +5,7 @@
 
 ---
 
-## Code Coverage
+#### Code Coverage
 
 <div align="center">
 
@@ -20,16 +20,11 @@
 
 ## Description
 
-action-action 
+...
 
-:warning: IMPORTANT: read this :warning:
+## Getting Started
 
-This project uses semantic-release to automatically version and publish the package. The versioning is based on the commit messages, which should follow the [Conventional Commits](https://www.conventionalcommits.org/en/v1.0.0/) specification.
-
---- 
-## Initial Setup
-
-Instructions for setting up the project locally:
+### Running the project
 
 ```bash
 git clone https://github.com/organisation/action-action.git
@@ -42,7 +37,7 @@ npm start
 
 ---
 
-## Running tests
+### Running tests
 
 ```bash
 npm test
