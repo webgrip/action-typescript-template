@@ -1,11 +1,5 @@
 name: "[Workflow] Run action-action"
 
-run-name: Run ${{ github.event.repository.name }}
-
-concurrency:
-  group: workflow-${{ github.workflow }}
-  cancel-in-progress: true
-
 on:
   workflow_dispatch:
 
