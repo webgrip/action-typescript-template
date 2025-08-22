@@ -1,0 +1,13 @@
+name: "[Call] Run this action-action manually"
+
+run-name: Run ${{ github.event.repository.name }}
+
+on:
+  workflow_call:
+
+jobs:
+  run-action:
+    runs-on: arc-runner-set
+    name: Run ${{ github.event.repository.name }}
+    steps:
+      - uses: ${{ github.event.repository.owner }}/${{ github.event.repository.name }}@v1
