@@ -31,5 +31,5 @@
   // Only compile the application source
   "include": ["src/**/*.ts"],
   // Exclude build output, node_modules, and tests
-  "exclude": ["dist", "node_modules", "tests"]
+  "exclude": ["dist", "node_modules", "tests", "docs"]
 }
