@@ -1,7 +1,7 @@
 import * as core from '@actions/core';
 import { ApplicationService } from './services/ApplicationService';
 
-async function run(): Promise<void> {
+export async function main(): Promise<void> {
     try {
         const application = new ApplicationService();
         await application.run();
@@ -11,4 +11,4 @@ async function run(): Promise<void> {
     }
 }
 
-run();
+main();

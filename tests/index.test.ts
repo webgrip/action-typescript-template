@@ -1,36 +1,41 @@
+// Keep the mock hoisted so all imports of '@actions/core' in this test file get mocked.
 jest.mock('@actions/core', () => ({
-  info: jest.fn(),
-  setFailed: jest.fn(),
+    info: jest.fn(),
+    setFailed: jest.fn(),
 }));
 
-import * as core from '@actions/core';
-import { ApplicationService } from '../src/services/ApplicationService';
-
 describe('src/index.ts', () => {
-  let runSpy: jest.SpyInstance;
-
-  beforeEach(() => {
-    jest.clearAllMocks();
-    runSpy = jest.spyOn(ApplicationService.prototype, 'run').mockResolvedValue(undefined);
-  });
-
-  afterEach(() => {
-    jest.restoreAllMocks();
-  });
-
-  it('should run the application and log success', async () => {
-    await jest.isolateModulesAsync(async () => {
-      await import('../src/index');
-      expect(runSpy).toHaveBeenCalled();
-      expect(core.info).toHaveBeenCalledWith('Application ran successfully');
+    beforeEach(() => {
+        jest.resetModules(); // ensure a fresh module registry for each test
+        jest.clearAllMocks();
     });
-  });
 
-  it('should setFailed if an error is thrown', async () => {
-    runSpy.mockRejectedValueOnce(new Error('fail'));
-    await jest.isolateModulesAsync(async () => {
-      await import('../src/index');
-      expect(core.setFailed).toHaveBeenCalledWith('Error: fail');
+    it('should run the application and log success', async () => {
+        await jest.isolateModulesAsync(async () => {
+            const { ApplicationService } = await import('../src/services/ApplicationService');
+            const core = await import('@actions/core');
+
+            const runSpy = jest
+                .spyOn(ApplicationService.prototype, 'run')
+                .mockResolvedValue(undefined);
+
+            await import('../src/index');
+
+            expect(runSpy).toHaveBeenCalled();
+            expect(core.info).toHaveBeenCalledWith('Application ran successfully');
+        });
     });
-  });
+
+    it('should setFailed if an error is thrown', async () => {
+        await jest.isolateModulesAsync(async () => {
+            const { ApplicationService } = await import('../src/services/ApplicationService');
+            const core = await import('@actions/core');
+
+            jest.spyOn(ApplicationService.prototype, 'run').mockRejectedValue(new Error('fail'));
+
+            await import('../src/index');
+
+            expect(core.setFailed).toHaveBeenCalledWith('Error: fail');
+        });
+    });
 });
