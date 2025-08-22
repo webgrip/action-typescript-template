@@ -2,8 +2,6 @@ name: '[Workflow] On Documentation Change'
 
 on:
   push:
-    branches:
-      - 'main'
     paths:
       - 'docs/techdocs/**'
       - '.github/workflows/on_docs_change.yml'
@@ -16,8 +14,15 @@ on:
         default: 'docs/techdocs'
 
 jobs:
-  update-techdocs:
-    name: 'Update TechDocs'
-    uses: webgrip/workflows/.github/workflows/update_techdocs.yml@main
+  generate-techdocs:
+    name: 'Generate TechDocs'
+    uses: webgrip/workflows/.github/workflows/techdocs-generate.yml@main
     with:
       source-dir: ${{ github.event.inputs.source-dir || 'docs/techdocs' }}
+
+  github-pages-deploy:
+    needs: generate-techdocs
+    if: >
+      'refs/heads/main' == ${{ github.ref }}
+    name: 'Deploy to GitHub Pages'
+    uses: webgrip/workflows/.github/workflows/techdocs-deploy-gh-pages.yml@main
