@@ -1,3 +1,13 @@
+## [1.0.2](https://github.com/webgrip/action-typescript-template/compare/v1.0.1...v1.0.2) (2025-09-13)
+
+
+### Bug Fixes
+
+* Added some extra badges ([5c4eb55](https://github.com/webgrip/action-typescript-template/commit/5c4eb55aee0ecae9f2c30968ad2b41048f0624c1))
+* docs ([3439ef2](https://github.com/webgrip/action-typescript-template/commit/3439ef27275abdd47864575cfee45f4a2211593e))
+* org ([b6db4a5](https://github.com/webgrip/action-typescript-template/commit/b6db4a52797a33c429cb8365a75f0bb1beb91ee8))
+* webgrip -> action ([aed9849](https://github.com/webgrip/action-typescript-template/commit/aed9849de8fb752a1c7e311b03e8207eaa4c6b7a))
+
 ## [1.0.1](https://github.com/webgrip/action-typescript-template/compare/v1.0.0...v1.0.1) (2025-08-22)
 
 
