@@ -2,7 +2,11 @@
   "name": "action-action",
   "version": "0.1.0",
   "description": "action-action description",
-  "main": "dist/index.js",
+  "main": "./dist/index.js",
+  "publisher": "organisation",
+  "categories": [
+    "Other"
+  ],
   "scripts": {
     "lint": "eslint . --ext .ts",
     "fix": "eslint --fix . --ext .ts",
