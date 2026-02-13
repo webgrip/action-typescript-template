@@ -38,7 +38,7 @@ services:
 
   action-action.dev:
     container_name: action-action.dev
-    image: node:24-alpine
+    image: node:24-alpine@sha256:4f696fbf39f383c1e486030ba6b289a5d9af541642fc78ab197e584a113b9c03
     working_dir: /workspace
     volumes:
       - ./:/workspace:cached

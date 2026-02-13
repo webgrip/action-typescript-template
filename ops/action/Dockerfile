@@ -1,4 +1,4 @@
-FROM node:24-alpine AS base
+FROM node:24-alpine@sha256:4f696fbf39f383c1e486030ba6b289a5d9af541642fc78ab197e584a113b9c03 AS base
 WORKDIR /workspace
 COPY package*.json ./
 RUN npm install --include=dev
@@ -15,7 +15,7 @@ FROM base AS lint
 ENV NODE_ENV=lint
 CMD ["npm", "run", "lint"]
 
-FROM node:24-alpine AS runtime
+FROM node:24-alpine@sha256:4f696fbf39f383c1e486030ba6b289a5d9af541642fc78ab197e584a113b9c03 AS runtime
 WORKDIR /workspace
 COPY package*.json ./
 RUN npm install --omit=dev
