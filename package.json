@@ -20,16 +20,16 @@
     "@actions/core": "^1.11.1"
   },
   "devDependencies": {
-    "@babel/eslint-parser": "^7.27.0",
-    "@eslint/js": "^9.23.0",
-    "@stylistic/eslint-plugin": "^4.2.0",
+    "@babel/eslint-parser": "7.28.0",
+    "@eslint/js": "9.34.0",
+    "@stylistic/eslint-plugin": "4.4.1",
     "@types/jest": "^29.5.14",
-    "@typescript-eslint/eslint-plugin": "^8.29.0",
-    "@vercel/ncc": "^0.38.3",
-    "eslint": "^9.23.0",
-    "istanbul-badges-readme": "^1.9.0",
-    "jest": "^29.7.0",
-    "ts-jest": "^29.3.1",
-    "typescript": "^5.8.2"
+    "@typescript-eslint/eslint-plugin": "8.40.0",
+    "@vercel/ncc": "0.38.3",
+    "eslint": "9.34.0",
+    "istanbul-badges-readme": "1.9.0",
+    "jest": "29.7.0",
+    "ts-jest": "29.4.1",
+    "typescript": "5.9.2"
   }
 }
