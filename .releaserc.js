@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Release config for webgrip/action-typescript-template.
 //
 // Forge-agnostic: ONE config, correct on both Forgejo (leading) and GitHub (mirror). The publish
