@@ -1,0 +1,16 @@
+name: "[Call] Run this action-action manually"
+
+# Template placeholder: consumers of this template replace `organisation/action-action@v1` with
+# their real action. runs-on: docker (the only label the in-cluster Forgejo runner advertises).
+
+run-name: Run action-action
+
+on:
+  workflow_call:
+
+jobs:
+  run-action:
+    runs-on: docker
+    name: Run action-action
+    steps:
+      - uses: organisation/action-action@v1

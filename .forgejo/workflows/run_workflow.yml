@@ -5,4 +5,4 @@ on:
 
 jobs:
   run-action:
-    uses: ./.github/workflows/run_workflow_call.yml
+    uses: ./.forgejo/workflows/run_workflow_call.yml

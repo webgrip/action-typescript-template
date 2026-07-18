@@ -1,0 +1,41 @@
+name: "[Workflow] On Source Change"
+
+# Forgejo mirror of .github/workflows/on_source_change.yml. Adaptations (forgejo-port-workflows):
+#   - reusables resolve against the webgrip/workflows .forgejo/ tree
+#   - the `semantic-release` caller job is renamed `release`: Forgejo v15 flattens a reusable's inner
+#     jobs into the caller graph, so a caller job id equal to the reusable's inner job id collides
+#   - token is WEBGRIP_CI_TOKEN, NOT secrets.FORGEJO_TOKEN (Forgejo reserves the FORGEJO_/GITHUB_/
+#     GITEA_ prefixes for built-ins, so a stored secret of that name cannot exist)
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+  statuses: write
+
+concurrency:
+  group: push-${{ github.ref_name }}
+
+on:
+  push:
+    paths:
+      - 'src/**'
+      - '.forgejo/workflows/on_source_change.yml'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'action.yml'
+      - '.releaserc.js'
+
+jobs:
+  linter:
+    uses: webgrip/workflows/.forgejo/workflows/gha-javascript-lint.yml@main
+
+  release:
+    uses: webgrip/workflows/.forgejo/workflows/semantic-release.yml@main
+    needs: [ linter ]
+    if: >
+      always()
+      && needs.linter.result == 'success'
+      && github.ref == 'refs/heads/main'
+    secrets:
+      FORGEJO_TOKEN: ${{ secrets.WEBGRIP_CI_TOKEN }}

@@ -1,0 +1,33 @@
+name: '[Workflow] On Documentation Change'
+
+# Forgejo mirror of .github/workflows/on_docs_change.yml. The techdocs-deploy reusable requires the
+# CI bot token to push the built site to the pages branch (replaces GITHUB_TOKEN). The stored org
+# secret is WEBGRIP_CI_TOKEN — Forgejo reserves the FORGEJO_ prefix for built-ins.
+
+on:
+  push:
+    paths:
+      - 'docs/techdocs/**'
+      - '.forgejo/workflows/on_docs_change.yml'
+  workflow_dispatch:
+    inputs:
+      source-dir:
+        type: string
+        description: 'The directory containing the techdocs files'
+        required: false
+        default: 'docs/techdocs'
+
+jobs:
+  generate-documentation:
+    name: 'Generate'
+    uses: webgrip/workflows/.forgejo/workflows/techdocs-generate.yml@main
+    with:
+      source-dir: ${{ github.event.inputs.source-dir || 'docs/techdocs' }}
+
+  deploy-documentation:
+    name: 'Deploy'
+    uses: webgrip/workflows/.forgejo/workflows/techdocs-deploy-gh-pages.yml@main
+    needs: generate-documentation
+    if: github.ref == 'refs/heads/main'
+    secrets:
+      FORGEJO_TOKEN: ${{ secrets.WEBGRIP_CI_TOKEN }}
