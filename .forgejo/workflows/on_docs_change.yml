@@ -31,3 +31,5 @@ jobs:
     if: github.ref == 'refs/heads/main'
     secrets:
       FORGEJO_TOKEN: ${{ secrets.WEBGRIP_CI_TOKEN }}
+
+# retrigger: deploy leg after git-ensure fix (workflows 22981b7)
