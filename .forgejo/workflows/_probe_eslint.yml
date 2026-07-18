@@ -1,0 +1,28 @@
+name: probe-eslint
+on:
+  push:
+    branches: [ci-probe]
+jobs:
+  capture:
+    runs-on: docker
+    container:
+      image: node:22
+    steps:
+      - name: clone, npm ci, eslint — capture to ci-diag
+        run: |
+          set +e
+          git config --global --add safe.directory "$PWD"
+          git clone --depth 5 --branch ci-probe "${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}.git" . >/dev/null 2>&1
+          {
+            echo "===== node/npm ====="; node --version; npm --version
+            echo; echo "===== npm ci (tail 30) ====="
+            npm ci 2>&1 | tail -30; echo "NPM_CI_EXIT=$?"
+            echo; echo "===== npm run lint / eslint (tail 60) ====="
+            if grep -q '"lint"' package.json; then npm run lint 2>&1 | tail -60; echo "LINT_EXIT=$?";
+            else npx eslint . 2>&1 | tail -60; echo "LINT_EXIT=$?"; fi
+          } > eslint-diag.log 2>&1
+          git config user.email ci@webgrip.dev; git config user.name webgrip-ci
+          git checkout -B ci-diag
+          git add -f eslint-diag.log
+          git commit -qm "probe: eslint diag [skip ci]" || true
+          git push -f "https://oauth2:${{ secrets.WEBGRIP_CI_TOKEN }}@forgejo.webgrip.dev/${GITHUB_REPOSITORY}.git" ci-diag 2>/dev/null || git push -f origin ci-diag
