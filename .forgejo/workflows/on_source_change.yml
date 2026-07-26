@@ -38,4 +38,4 @@ jobs:
       && needs.linter.result == 'success'
       && github.ref == 'refs/heads/main'
     secrets:
-      FORGEJO_TOKEN: ${{ secrets.WEBGRIP_CI_TOKEN }}
+      CI_TOKEN: ${{ secrets.WEBGRIP_CI_TOKEN }}
