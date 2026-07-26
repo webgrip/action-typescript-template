@@ -24,7 +24,7 @@ on:
       - 'package.json'
       - 'package-lock.json'
       - 'action.yml'
-      - '.releaserc.js'
+      - '.releaserc.cjs'
 
 jobs:
   linter:
