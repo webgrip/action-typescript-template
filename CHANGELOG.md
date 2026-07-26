@@ -1,3 +1,9 @@
+## [1.0.4](https://forgejo.webgrip.dev/webgrip/action-typescript-template/compare/v1.0.3...v1.0.4) (2026-07-26)
+
+### Fixed
+
+* **ci:** pass the bot token to the release reusable as CI_TOKEN ([e1b1f87](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/e1b1f87ab9311634b91c9bcb1b672dff9699891e))
+
 ## [1.0.3](https://forgejo.webgrip.dev/webgrip/action-typescript-template/compare/v1.0.2...v1.0.3) (2026-07-26)
 
 ### Dependencies
