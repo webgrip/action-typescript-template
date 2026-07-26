@@ -1,3 +1,19 @@
+## [1.0.3](https://forgejo.webgrip.dev/webgrip/action-typescript-template/compare/v1.0.2...v1.0.3) (2026-07-26)
+
+### Dependencies
+
+* **deps:** update dependency @babel/eslint-parser to ^7.28.0 ([d63278f](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/d63278f8df271e53762ebc467c0c4041d9aa6c61))
+
+### Fixed
+
+* **ci:** eslint-disable in .releaserc.js ([0b683d9](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/0b683d92d665b1ee9e2c186e0c6c50d9976b6d4c))
+
+### CI
+
+* adopt @webgrip/semantic-release-config ([e3eb553](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/e3eb5539714ac56e5e332fffe8a5a6806fe978fc))
+* adopt Forgejo Actions CI (.github -> .forgejo) ([868e644](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/868e644f56f18286dadab2f1bc5812403d41c9dd))
+* retrigger docs pipeline (git-ensure fix in reusable) ([5f7034d](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/5f7034d62d9a5a1d6e22184212790970468aaaea))
+
 ## [1.0.2](https://github.com/webgrip/action-typescript-template/compare/v1.0.1...v1.0.2) (2025-09-13)
 
 
