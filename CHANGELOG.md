@@ -1,3 +1,22 @@
+## [1.1.0](https://forgejo.webgrip.dev/webgrip/action-typescript-template/compare/v1.0.4...v1.1.0) (2026-10-25)
+
+### Added
+
+* **docs:** flip strict link validation on — links verified clean (estate item [#17](https://forgejo.webgrip.dev/webgrip/action-typescript-template/issues/17)) ([d805ae2](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/d805ae2e8c972164676cc836c5455ec36465c017))
+* **docs:** publish to docs.webgrip.dev/action-typescript-template/ — estate rollout (ADR-0052) ([9c618c4](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/9c618c44f5f1437a23e64b61eb46f950804c05f4))
+* **docs:** publish to own docs-action-typescript-template bucket (estate [#2](https://forgejo.webgrip.dev/webgrip/action-typescript-template/issues/2)) ([cfae074](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/cfae074365b05f8e0c5636c21d14ef8a68befaea))
+
+### CI
+
+* **release:** keep releasing in the config 1.x toolchain image ([6225072](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/6225072bd9de55a4e4783de4b065477fd90ead5c)), references [#84](https://forgejo.webgrip.dev/webgrip/action-typescript-template/issues/84)
+* run the shared agents-check and let Renovate bump the agent pins ([c42cc90](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/c42cc90de532e3469475e08d8c67fe89017085ff))
+
+### Internal
+
+* **agents:** adopt the webgrip agent standard (agent-standards v0.3.1) ([61fe86b](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/61fe86b8e2c9b6e93e54f1b87871b4cebde5fcbc))
+* **docs:** bump reusables — backup-dir trash-net + pagefind estate-search index (estate items 1+4) ([f65c2c8](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/f65c2c878c90ce6bf215966268eca6de16b90daf))
+* **renovate:** deze repo draait nu op het org-preset ([fa2cf8e](https://forgejo.webgrip.dev/webgrip/action-typescript-template/commit/fa2cf8e02ddcbf1847c88b238a6682a850bf33b7))
+
 ## [1.0.4](https://forgejo.webgrip.dev/webgrip/action-typescript-template/compare/v1.0.3...v1.0.4) (2026-07-26)
 
 ### Fixed
