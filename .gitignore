@@ -5,3 +5,7 @@ coverage/
 .jest/
 dist/
 *.private.env.json
+
+
+# APM dependencies
+apm_modules/
